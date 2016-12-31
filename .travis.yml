@@ -4,8 +4,10 @@ python:
 install:
     - "pip install requests==2.12.4"
     - "pip install beautifulsoup4==4.5.1"
+    - "pip install Jinja2==2.8"
+    - "pip install html5lib==0.999"
 branches:
     only:
         - gh-pages
 script:
-    - python updatesitemap.py
+    - bash ./build.sh
