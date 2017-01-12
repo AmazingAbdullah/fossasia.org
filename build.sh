@@ -4,18 +4,20 @@ git config --global user.name "Travis CI"
 git remote rm origin
 git remote add origin git@github.com:fossasia/fossasia.org.git
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]
-then git clone https://github.com/fossasia/fossasia.org.git out
-cd out
-git fetch https://github.com/fossasia/fossasia.org.git refs/pull/${TRAVIS_PULL_REQUEST}/merge:${TRAVIS_PULL_REQUEST}
+then 
+# git clone https://github.com/fossasia/fossasia.org.git out
+#cd out
+#git fetch https://github.com/fossasia/fossasia.org.git refs/pull/${TRAVIS_PULL_REQUEST}/merge:${TRAVIS_PULL_REQUEST}
 git checkout $TRAVIS_PULL_REQUEST
 python j2build.py
 echo "PR is ready to merge!"
 fi
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]
-then git clone https://github.com/${TRAVIS_REPO_SLUG}.git out
+then 
+#git clone https://github.com/${TRAVIS_REPO_SLUG}.git out
+#cd out
 git checkout $TRAVIS_BRANCH
-cd out
 python j2build.py
 git add .
 git commit -m 'Travis CI: Build new sitemap from template'
