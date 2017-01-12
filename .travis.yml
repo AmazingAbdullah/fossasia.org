@@ -9,6 +9,6 @@ install:
 branches:
     only:
         - gh-pages
-        - temp
+        - noclone
 script:
     - bash ./build.sh
